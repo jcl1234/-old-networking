@@ -192,6 +192,12 @@ net.receive("connect", function()
   net.sendToServer("player_info", localPlayer:getInfo())
 end)
 
+--Return to menu if disconnected
+net.receive(("disconnect"), function() 
+  game.state = "menu"
+  ui.mainMenu:open()
+end)
+
 --Set Local Player ID
 net.receive("get_id", function(data)
   local id = tonumber(data)
